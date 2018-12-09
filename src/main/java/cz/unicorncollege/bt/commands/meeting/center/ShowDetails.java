@@ -13,25 +13,19 @@ import cz.unicorncollege.controller.MeetingController;
 import java.util.List;
 import java.util.Map;
 
-public class ShowDetails extends MeetingCenterCommand {
+public class ShowDetails extends Command {
 
-    public ShowDetails(MeetingController performOn) {
-        super(performOn);
-    }
-
-    @Override
+   @Override
     public void perform() {
         Process process = new Process(true);
         Map<MeetingRoomCommandName, Command> roomCommands = MeetingRoomCommandName.initCommands(process);
         List<String> choices = initChoices(roomCommands.keySet());
         while (process.run())
             performCommands(roomCommands,choices);
-            //roomCommands.get(MeetingRoomCommandName.getCommandByNumber(Choices.getChoice("choose operation number",choices))).perform();
     }
 
     private void performCommands( Map<MeetingRoomCommandName, Command> commands, List<String> choices) {
         try {
-            //commands.get(getCommand(userChoice, choices)).perform(userChoice.getCode());
             commands.get(getCommand(choices)).perform();
         }catch (RuntimeException e){
             System.out.println("You have typed unknown command, use known command");

@@ -1,11 +1,12 @@
 package cz.unicorncollege.bt.commands.meeting.center;
 
+import cz.unicorncollege.bt.commands.Command;
 import cz.unicorncollege.bt.commands.support.UserChoice;
 import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.utils.Choices;
 import cz.unicorncollege.controller.MeetingController;
 
-public class Delete extends MeetingCenterCommand {
+public class Delete extends Command {
 
     public Delete(MeetingController performOnController) {
         super(performOnController);

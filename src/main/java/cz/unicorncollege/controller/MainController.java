@@ -47,7 +47,7 @@ public class MainController extends Controller{
 		return MainControllerCommandName.getCommandByNumber(Choices.getChoice("Select an option: ", choices));
 	}
 
-	private MeetingController initMeetingController(){
+	private static MeetingController initMeetingController(){
 		MeetingController meetingController= new MeetingController();
 		meetingController.init();
 		return meetingController;

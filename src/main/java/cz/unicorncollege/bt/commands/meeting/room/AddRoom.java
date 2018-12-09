@@ -1,13 +1,11 @@
 package cz.unicorncollege.bt.commands.meeting.room;
 
-import cz.unicorncollege.bt.commands.meeting.room.MeetingRoomCommand;
+import cz.unicorncollege.bt.commands.Command;
 import cz.unicorncollege.bt.commands.support.UserChoice;
-import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.model.MeetingRoom;
 import cz.unicorncollege.bt.utils.Choices;
-import cz.unicorncollege.controller.MeetingController;
 
-public class AddRoom extends MeetingRoomCommand {
+public class AddRoom extends Command {
 
 
     @Override

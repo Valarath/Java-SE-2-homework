@@ -1,11 +1,11 @@
 package cz.unicorncollege.bt.commands.meeting.room;
 
+import cz.unicorncollege.bt.commands.Command;
 import cz.unicorncollege.bt.commands.support.UserChoice;
-import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.model.MeetingRoom;
 import cz.unicorncollege.bt.utils.Choices;
 
-public class EditRoom  extends MeetingRoomCommand{
+public class EditRoom  extends Command {
 
     @Override
     public void perform() {
@@ -20,7 +20,7 @@ public class EditRoom  extends MeetingRoomCommand{
         chosenRoom.setName(getOriginalIfEmpty(chosenRoom.getName(), Choices.getInput("Enter new name: ")));
         chosenRoom.setDescription(getOriginalIfEmpty(chosenRoom.getName(),Choices.getInput("Enter new description: ")));
         chosenRoom.setVideoConference(getOriginalIfEmpty(chosenRoom.hasVideoConference(),Choices.getInput("Is video conference possible yes/no: ")));
-        chosenRoom.setCapacity(getOriginalIfEmpty(chosenRoom.getCapacity(),Choices.getInput("Enter new name: ")));
+        chosenRoom.setCapacity(getOriginalIfEmpty(chosenRoom.getCapacity(),Choices.getInput("Enter new capacity: ")));
     }
 
     private MeetingRoom getMeetingRoomToEdit(String roomCode){

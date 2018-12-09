@@ -13,4 +13,5 @@ public abstract class Controller {
                 .map(CommandName::getDescription)
                 .collect(Collectors.toList());
     }
+
 }

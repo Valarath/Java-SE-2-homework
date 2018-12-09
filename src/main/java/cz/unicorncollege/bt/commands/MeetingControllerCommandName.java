@@ -24,7 +24,7 @@ public enum MeetingControllerCommandName implements CommandName{
 
     public static Map<MeetingControllerCommandName, Command> initCommands(MeetingController controller, Process run){
         Map<MeetingControllerCommandName, Command> commands = new LinkedHashMap<>();
-        commands.put(MeetingControllerCommandName.SHOW_DETAILS, new ShowDetails(controller));
+        commands.put(MeetingControllerCommandName.SHOW_DETAILS, new ShowDetails());
         commands.put(MeetingControllerCommandName.EDIT, new Edit());
         commands.put(MeetingControllerCommandName.DELETE, new Delete(controller));
         commands.put(MeetingControllerCommandName.Back, new KillProccess(run));

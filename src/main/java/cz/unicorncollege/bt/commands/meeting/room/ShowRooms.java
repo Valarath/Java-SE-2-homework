@@ -1,15 +1,10 @@
 package cz.unicorncollege.bt.commands.meeting.room;
 
 import cz.unicorncollege.bt.commands.Command;
-import cz.unicorncollege.bt.commands.meeting.center.MeetingCenterCommand;
 import cz.unicorncollege.bt.commands.support.UserChoice;
-import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.model.MeetingRoom;
-import cz.unicorncollege.controller.MeetingController;
 
-import java.io.IOException;
-
-public class ShowRooms extends MeetingRoomCommand {
+public class ShowRooms extends Command {
 
     @Override
     public void perform() {

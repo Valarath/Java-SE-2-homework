@@ -1,7 +1,7 @@
 package cz.unicorncollege.bt.commands.main;
 
-import cz.unicorncollege.bt.commands.*;
-import cz.unicorncollege.bt.commands.meeting.center.MeetingCenterCommand;
+import cz.unicorncollege.bt.commands.Command;
+import cz.unicorncollege.bt.commands.MeetingControllerCommandName;
 import cz.unicorncollege.bt.commands.support.Process;
 import cz.unicorncollege.bt.commands.support.UserChoice;
 import cz.unicorncollege.bt.model.MeetingCentre;
