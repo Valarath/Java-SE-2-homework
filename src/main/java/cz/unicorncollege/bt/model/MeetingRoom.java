@@ -7,7 +7,7 @@ public class MeetingRoom extends MeetingObject {
 
 	public StringBuilder toCsv(StringBuilder builder){
 		return super.toCsv(builder.append(System.getProperty("line.separator")))
-				.append(capacity).append(",")
+				.append(",").append(capacity).append(",")
 				.append(toString(videoConference)).append(",")
 				.append(meetingCentre.getCode());
 	}

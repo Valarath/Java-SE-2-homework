@@ -23,9 +23,9 @@ public class AddRoom extends MeetingRoomCommand {
 
     private boolean returnBooleanWithData(String inputMessage){
         String input = Choices.getInput(inputMessage);
-        while (input.length()==0 || !input.matches("yes") || !input.matches("no"))
+        while (input.length()==0 || (!input.equals("yes") && !input.equals("no")))
             input = Choices.getInput("This parameter cannot be empty and value must be yes or no: ");
-        return input.equals("true");
+        return input.equals("yes");
     }
 
     private int returnNumberWithData(String inputMessage){
