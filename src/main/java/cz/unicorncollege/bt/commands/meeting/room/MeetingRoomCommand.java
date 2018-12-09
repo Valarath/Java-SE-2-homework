@@ -6,12 +6,8 @@ import cz.unicorncollege.controller.MeetingController;
 
 public abstract class MeetingRoomCommand extends Command {
 
-    protected MeetingRoomCommand() {
+
+    protected MeetingRoomCommand( ) {
         super(null);
     }
-
-    public void perform(String... params) {
-    }
-
-    public abstract void perform(MeetingCentre meetingCentre);
 }

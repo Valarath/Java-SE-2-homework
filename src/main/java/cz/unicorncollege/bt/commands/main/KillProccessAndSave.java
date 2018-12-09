@@ -17,9 +17,9 @@ public class KillProccessAndSave extends KillProccess {
     }
 
     @Override
-    public void perform(String[] params) {
+    public void perform() {
         FileParser.saveData("data.csv",toSaveString());
-        super.perform(params);
+        super.perform();
     }
 
     public String toSaveString() {
@@ -32,7 +32,7 @@ public class KillProccessAndSave extends KillProccess {
 
 
     private  void convertMeetingCentresToCsv(StringBuilder builder, List<MeetingRoom> rooms) {
-        for(MeetingCentre centre:performOn.getMeetingCentres()){
+        for(MeetingCentre centre: performOn.getMeetingCentres()){
             rooms.addAll(centre.getMeetingRooms());
             centre.toCsv(builder);
         }

@@ -4,6 +4,7 @@ import cz.unicorncollege.bt.commands.meeting.center.Delete;
 import cz.unicorncollege.bt.commands.meeting.center.Edit;
 import cz.unicorncollege.bt.commands.meeting.center.ShowDetails;
 import cz.unicorncollege.bt.commands.support.Process;
+import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.controller.MeetingController;
 
 import java.util.LinkedHashMap;
@@ -24,7 +25,7 @@ public enum MeetingControllerCommandName implements CommandName{
     public static Map<MeetingControllerCommandName, Command> initCommands(MeetingController controller, Process run){
         Map<MeetingControllerCommandName, Command> commands = new LinkedHashMap<>();
         commands.put(MeetingControllerCommandName.SHOW_DETAILS, new ShowDetails(controller));
-        commands.put(MeetingControllerCommandName.EDIT, new Edit(controller));
+        commands.put(MeetingControllerCommandName.EDIT, new Edit());
         commands.put(MeetingControllerCommandName.DELETE, new Delete(controller));
         commands.put(MeetingControllerCommandName.Back, new KillProccess(run));
         return commands;

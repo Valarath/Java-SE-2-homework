@@ -6,16 +6,9 @@ import cz.unicorncollege.controller.MeetingController;
 
 public abstract class MeetingCenterCommand  extends Command {
 
-    protected MeetingCenterCommand(MeetingController performOn) {
-        super(performOn);
+    protected MeetingCenterCommand(MeetingController performOnController) {
+        super(performOnController);
     }
 
-    protected MeetingCentre findCentreByCode(String code){
-        for(MeetingCentre meetingCentre:performOn.getMeetingCentres())
-            if(meetingCentre.getCode().equals(code))
-                return meetingCentre;
-        throw new WrongMeetingCenterCodeException();
-    }
 
-    public static class WrongMeetingCenterCodeException extends RuntimeException{}
 }

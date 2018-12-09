@@ -1,21 +1,21 @@
 package cz.unicorncollege.bt.commands.meeting.center;
 
-import cz.unicorncollege.bt.commands.Command;
+import cz.unicorncollege.bt.commands.support.UserChoice;
 import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.utils.Choices;
 import cz.unicorncollege.controller.MeetingController;
 
 public class Delete extends MeetingCenterCommand {
 
-    public Delete(MeetingController performOn) {
-        super(performOn);
+    public Delete(MeetingController performOnController) {
+        super(performOnController);
     }
 
     @Override
-    public void perform(String[] code) {
-        MeetingCentre centerToDelete = findCentreByCode(code[0]);
-        if(checkIfNameMatch(centerToDelete, Choices.getInput("Enter name of MeetingCentre: ")))
-            performDeleteOfCenter(centerToDelete);
+    public void perform() {
+        MeetingCentre performOnCenter = UserChoice.getChosenCenter();
+        if(checkIfNameMatch(performOnCenter, Choices.getInput("Enter name of MeetingCentre: ")))
+            performDeleteOfCenter(performOnCenter);
         else
             System.out.println("name does not match");
 

@@ -1,6 +1,7 @@
 package cz.unicorncollege.bt.commands.main;
 
 import cz.unicorncollege.bt.commands.*;
+import cz.unicorncollege.bt.commands.meeting.center.MeetingCenterCommand;
 import cz.unicorncollege.bt.commands.support.Process;
 import cz.unicorncollege.bt.commands.support.UserChoice;
 import cz.unicorncollege.bt.model.MeetingCentre;
@@ -17,7 +18,7 @@ public class ListAllMeetingCentres extends Command {
     }
 
     @Override
-    public void perform(String[] params) {
+    public void perform() {
         UserChoice userChoice = new UserChoice();
         Process process = new Process(true);
         Map<MeetingControllerCommandName, Command> commands = MeetingControllerCommandName.initCommands(performOn,process);
@@ -29,7 +30,8 @@ public class ListAllMeetingCentres extends Command {
 
     private void performCommands(UserChoice userChoice, Map<MeetingControllerCommandName, Command> commands, List<String> choices) {
         try {
-            commands.get(getCommand(userChoice, choices)).perform(userChoice.getCode());
+            //commands.get(getCommand(userChoice, choices)).perform(userChoice.getCode());
+            commands.get(getCommand(userChoice, choices)).perform();
         }catch (RuntimeException e){
             System.out.println("You have typed unknown command, use known command");
         }
@@ -42,7 +44,10 @@ public class ListAllMeetingCentres extends Command {
 
     private int getInput(UserChoice userChoice, List<String> choices) {
         printCenters();
-        return userChoice.set(Choices.getInput("Choose option (including code after '-', example 1-M01): ",choices)).getOption();
+        userChoice.set(Choices.getInput("Choose option (including code after '-', example 1-M01): ",choices));
+        if(userChoice.getOption()!=4)
+            UserChoice.setChosenCenter(findCentreByCode(userChoice.getCode()));
+        return userChoice.getOption();
     }
 
     private void printCenters(){
@@ -53,10 +58,15 @@ public class ListAllMeetingCentres extends Command {
 
     private void printCenter(MeetingCentre center){
         System.out.println("code: " + center.getCode() + ", name: " + center.getName());
-		/*System.out.println("	-" + center.getDescription());
-		System.out.println("contains rooms:");
-		center.getMeetingRooms().forEach(meetingRoom -> {printRoom(meetingRoom);});*/
     }
 
+    private MeetingCentre findCentreByCode(String code){
+        for(MeetingCentre meetingCentre: performOn.getMeetingCentres())
+            if(meetingCentre.getCode().equals(code))
+                return meetingCentre;
+        throw new WrongMeetingCenterCodeException();
+    }
+
+    public static class WrongMeetingCenterCodeException extends RuntimeException{}
 
 }

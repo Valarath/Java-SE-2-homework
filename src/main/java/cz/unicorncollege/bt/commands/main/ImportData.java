@@ -11,7 +11,7 @@ public class ImportData extends Command {
     }
 
     @Override
-    public void perform(String[] params) {
+    public void perform() {
         performOn.setMeetingCentres(FileParser.importData());
     }
 }
