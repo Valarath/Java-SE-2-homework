@@ -1,20 +1,15 @@
 package cz.unicorncollege.bt.commands;
 
-import cz.unicorncollege.bt.model.MeetingCentre;
 import cz.unicorncollege.bt.model.MeetingObject;
 import cz.unicorncollege.bt.utils.Choices;
 import cz.unicorncollege.controller.Controller;
 import cz.unicorncollege.controller.MeetingController;
 
 import java.util.List;
-import java.util.Set;
-import java.util.stream.Collectors;
 
 public abstract class Command extends Controller {
 
     protected MeetingController performOn;
-
-
     protected Command(){}
     protected Command(MeetingController performOn){
         this.performOn =performOn;

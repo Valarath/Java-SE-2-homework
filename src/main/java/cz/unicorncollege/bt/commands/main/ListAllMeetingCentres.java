@@ -30,7 +30,6 @@ public class ListAllMeetingCentres extends Command {
 
     private void performCommands(UserChoice userChoice, Map<MeetingControllerCommandName, Command> commands, List<String> choices) {
         try {
-            //commands.get(getCommand(userChoice, choices)).perform(userChoice.getCode());
             commands.get(getCommand(userChoice, choices)).perform();
         }catch (RuntimeException e){
             System.out.println("You have typed unknown command, use known command");

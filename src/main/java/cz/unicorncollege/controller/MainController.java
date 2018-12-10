@@ -3,6 +3,7 @@ package cz.unicorncollege.controller;
 import java.util.*;
 
 import cz.unicorncollege.bt.commands.*;
+import cz.unicorncollege.bt.commands.support.GetCommand;
 import cz.unicorncollege.bt.commands.support.Process;
 import cz.unicorncollege.bt.utils.Choices;
 
@@ -12,7 +13,7 @@ import cz.unicorncollege.bt.utils.Choices;
  *
  * @author UCL
  */
-public class MainController extends Controller{
+public class MainController extends Controller {
 	
     /**
 	 * Main method, which runs the whole application.
@@ -21,26 +22,8 @@ public class MainController extends Controller{
 	 */
 	public static void main(String[] argv) {
 		MainController instance = new MainController();
-		instance.run();
-	}
-
-	/**
-	 * Method which shows the main menu and end after user chooses KillProccess.
-	 */
-	private void run() {
 		Process program = new Process(true);
-		Map<MainControllerCommandName, Command> commands = MainControllerCommandName.initCommands(initMeetingController(),program);
-		List<String> choices = initChoices(commands.keySet());
-		while (program.run())
-			performCommands(commands, choices);
-	}
-
-	private void performCommands(Map<MainControllerCommandName, Command> commands, List<String> choices) {
-		try {
-			commands.get(getCommandByNumber(choices)).perform();
-		}catch (MainControllerCommandName.UnknownCommandException e){
-			System.out.println("You have typed unknown command, use known command");
-		}
+		instance.run(MainControllerCommandName.initCommands(initMeetingController(),program),program,instance::getCommandByNumber);
 	}
 
 	private MainControllerCommandName getCommandByNumber(List<String> choices) {
@@ -52,4 +35,6 @@ public class MainController extends Controller{
 		meetingController.init();
 		return meetingController;
 	}
+
+
 }

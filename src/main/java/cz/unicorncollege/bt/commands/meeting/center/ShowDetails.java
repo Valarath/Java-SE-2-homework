@@ -19,19 +19,9 @@ public class ShowDetails extends Command {
     public void perform() {
         Process process = new Process(true);
         Map<MeetingRoomCommandName, Command> roomCommands = MeetingRoomCommandName.initCommands(process);
-        List<String> choices = initChoices(roomCommands.keySet());
-        while (process.run())
-            performCommands(roomCommands,choices);
-    }
+        super.run(roomCommands,process,this::getCommand);
 
-    private void performCommands( Map<MeetingRoomCommandName, Command> commands, List<String> choices) {
-        try {
-            commands.get(getCommand(choices)).perform();
-        }catch (RuntimeException e){
-            System.out.println("You have typed unknown command, use known command");
-        }
     }
-
 
     private MeetingRoomCommandName getCommand( List<String> choices) {
         System.out.println();
